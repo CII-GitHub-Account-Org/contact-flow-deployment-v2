@@ -10,65 +10,47 @@ Resources:
       Name: copilot-test-contact-flow
       Type: CONTACT_FLOW
       Description: test flow for copilot
-      Content: >
-        {
-          "Metadata": {
-            "entryPointPosition": {
-              "x": 50,
-              "y": 50
-            },
-            "snapToGrid": false,
-            "ActionMetadata": {
-              "entryPoint": {
-                "text": "Entry point",
-                "visible": false
-              }
-            }
+    Content: >
+      {
+        "Metadata": {
+          "entryPointPosition": {
+            "x": 50,
+            "y": 50
           },
-          "StartAction": "entryPoint",
-          "States": {
+          "snapToGrid": false,
+          "ActionMetadata": {
             "entryPoint": {
-              "Type": "EntryPoint",
-              "Parameters": [],
-              "Transitions": {
-                "NextAction": "SetWorkingQueue",
-                "Errors": [],
-                "Conditions": []
-              }
-            },
-            "SetWorkingQueue": {
-              "Type": "SetQueue",
-              "Parameters": [
-                {
-                  "Name": "QueueId",
-                  "Value": "queue-id"
-                }
-              ],
-              "Transitions": {
-                "NextAction": "PlayGreeting",
-                "Errors": [],
-                "Conditions": []
-              }
-            },
-            "PlayGreeting": {
-              "Type": "PlayPrompt",
-              "Parameters": [
-                {
-                  "Name": "Text",
-                  "Value": "Hello, welcome to our service."
-                }
-              ],
-              "Transitions": {
-                "NextAction": "Disconnect",
-                "Errors": [],
-                "Conditions": []
-              }
-            },
-            "Disconnect": {
-              "Type": "Disconnect",
-              "Parameters": [],
-              "Transitions": {}
+              "text": "Entry point",
+              "visible": false
             }
           }
+        },
+        "StartAction": "entryPoint",
+        "Actions": {
+          "entryPoint": {
+            "Type": "EntryPoint",
+            "Parameters": {},
+            "Transitions": {
+              "NextAction": "invokeLambdaFunction",
+              "Errors": [],
+              "Conditions": []
+            }
+          },
+          "invokeLambdaFunction": {
+            "Type": "InvokeLambdaFunction",
+            "Parameters": {
+              "FunctionArn": "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+            },
+            "Transitions": {
+              "NextAction": "endFlow",
+              "Errors": [],
+              "Conditions": []
+            }
+          },
+          "endFlow": {
+            "Type": "EndFlow",
+            "Parameters": {},
+            "Transitions": {}
+          }
         }
-        
+      }
