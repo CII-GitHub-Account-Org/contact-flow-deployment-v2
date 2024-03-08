@@ -8,7 +8,7 @@ Resources:
     Properties:
       InstanceId: 4bbee21d-72b8-442b-af39-dce4128ca77e
       Name: copilot-test-contact-flow
-      Type: inbound
+      Type: CONTACT_FLOW
       Description: test flow for copilot
       Content: >
         {
