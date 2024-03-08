@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: An AWS Serverless Application.
+
+Resources:
+  MyContactFlow:
+    Type: AWS::Connect::ContactFlow
+    Properties:
+      InstanceId: 4bbee21d-72b8-442b-af39-dce4128ca77e
+      Name: copilot-test-contact-flow
+      Type: inbound
+      Description: test flow for copilot
+      Content: >
+        {
+          "Metadata": {
+            "entryPointPosition": {
+              "x": 50,
+              "y": 50
+            },
+            "snapToGrid": false,
+            "ActionMetadata": {
+              "entryPoint": {
+                "text": "Entry point",
+                "visible": false
+              }
+            }
+          },
+          "StartAction": "entryPoint",
+          "States": {
+            "entryPoint": {
+              "Type": "EntryPoint",
+              "Parameters": [],
+              "Transitions": {
+                "NextAction": "SetWorkingQueue",
+                "Errors": [],
+                "Conditions": []
+              }
+            },
+            "SetWorkingQueue": {
+              "Type": "SetQueue",
+              "Parameters": [
+                {
+                  "Name": "QueueId",
+                  "Value": "queue-id"
+                }
+              ],
+              "Transitions": {
+                "NextAction": "PlayGreeting",
+                "Errors": [],
+                "Conditions": []
+              }
+            },
+            "PlayGreeting": {
+              "Type": "PlayPrompt",
+              "Parameters": [
+                {
+                  "Name": "Text",
+                  "Value": "Hello, welcome to our service."
+                }
+              ],
+              "Transitions": {
+                "NextAction": "Disconnect",
+                "Errors": [],
+                "Conditions": []
+              }
+            },
+            "Disconnect": {
+              "Type": "Disconnect",
+              "Parameters": [],
+              "Transitions": {}
+            }
+          }
+        }
+        
