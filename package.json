@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Node project for deploying Amazon Connect contact flow",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/yourusername/my-project#readme",
   "dependencies": {
+    "@aws-sdk/client-connect": "^3.533.0",
     "aws-sdk": "^2.1031.0"
   }
 }

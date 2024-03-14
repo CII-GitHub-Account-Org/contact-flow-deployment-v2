@@ -1,12 +1,11 @@
-// src/createContactFlow.js
+// Import required AWS SDK clients and commands for Node.js
+const { ConnectClient, CreateContactFlowCommand } = require("@aws-sdk/client-connect");
 
-const AWS = require('aws-sdk');
+// Set the AWS Region
+const REGION = "us-east-1"; //e.g. "us-east-1"
 
-// Configure AWS SDK
-AWS.config.update({region: 'us-east-1'});
-
-// Create an Amazon Connect service object
-const connect = new AWS.Connect({apiVersion: '2017-08-08'});
+// Create an Amazon Connect service client object
+const connect = new ConnectClient({ region: REGION });
 
 // Define your contact flow details
 const contactFlowDetails = {
@@ -44,21 +43,21 @@ const contactFlowDetails = {
 
 // Function to create contact flow
 async function createContactFlow() {
-  try {
-    const params = {
-      InstanceId: '4bbee21d-72b8-442b-af39-dce4128ca77e', // replace with your instance id
-      // arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e
-      Name: 'copilot-test-contact-flow', // replace with your contact flow name
-      Type: 'CONTACT_FLOW',
-      Description: 'test flow for copilot', // replace with your description
-      Content: JSON.stringify(contactFlowDetails),
-    };
+    try {
+        const params = {
+            InstanceId: '4bbee21d-72b8-442b-af39-dce4128ca77e', // replace with your instance id
+            Name: 'copilot-test-contact-flow', // replace with your contact flow name
+            Type: 'CONTACT_FLOW',
+            Description: 'test flow for copilot', // replace with your description
+            Content: JSON.stringify(contactFlowDetails),
+        };
 
-    const response = await connect.createContactFlow(params).promise();
-    console.log(`Contact flow created with ARN: ${response.ContactFlowArn}`);
-  } catch (error) {
-    console.error(`Error creating contact flow: ${error}`);
-  }
+        const command = new CreateContactFlowCommand(params);
+        const response = await connect.send(command);
+        console.log(`Contact flow created with ARN: ${response.ContactFlowArn}`);
+    } catch (error) {
+        console.error(`Error creating contact flow: ${error}`);
+    }
 }
 
 // Call the function to create the contact flow
