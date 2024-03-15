@@ -3,8 +3,8 @@ Transform: AWS::Serverless-2016-10-31
 Description: An AWS Serverless Application.
 
 Resources:
-  MyContactFlowTest:
-    Type: AWS::Connect::ContactFlow
+  Flow:
+    Type: 'AWS::Connect::ContactFlow'
     Properties:
       InstanceArn: arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e
       Name: copilot-test-contact-flow
@@ -54,3 +54,6 @@ Resources:
             }
           }
         }
+      Tags:
+        - Key: testkey
+          Value: testValue
