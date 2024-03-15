@@ -10,47 +10,47 @@ Resources:
       Name: copilot-test-contact-flow
       Type: CONTACT_FLOW
       Description: test flow for copilot
-    Content:
-      {
-        "Metadata": {
-          "entryPointPosition": {
-            "x": 50,
-            "y": 50
-          },
-          "snapToGrid": false,
-          "ActionMetadata": {
-            "entryPoint": {
-              "text": "Entry point",
-              "visible": false
-            }
-          }
-        },
-        "StartAction": "entryPoint",
-        "Actions": {
-          "entryPoint": {
-            "Type": "EntryPoint",
-            "Parameters": {},
-            "Transitions": {
-              "NextAction": "invokeLambdaFunction",
-              "Errors": [],
-              "Conditions": []
-            }
-          },
-          "invokeLambdaFunction": {
-            "Type": "InvokeLambdaFunction",
-            "Parameters": {
-              "FunctionArn": "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+      Content:
+        {
+          "Metadata": {
+            "entryPointPosition": {
+              "x": 50,
+              "y": 50
             },
-            "Transitions": {
-              "NextAction": "endFlow",
-              "Errors": [],
-              "Conditions": []
+            "snapToGrid": false,
+            "ActionMetadata": {
+              "entryPoint": {
+                "text": "Entry point",
+                "visible": false
+              }
             }
           },
-          "endFlow": {
-            "Type": "EndFlow",
-            "Parameters": {},
-            "Transitions": {}
+          "StartAction": "entryPoint",
+          "Actions": {
+            "entryPoint": {
+              "Type": "EntryPoint",
+              "Parameters": {},
+              "Transitions": {
+                "NextAction": "invokeLambdaFunction",
+                "Errors": [],
+                "Conditions": []
+              }
+            },
+            "invokeLambdaFunction": {
+              "Type": "InvokeLambdaFunction",
+              "Parameters": {
+                "FunctionArn": "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+              },
+              "Transitions": {
+                "NextAction": "endFlow",
+                "Errors": [],
+                "Conditions": []
+              }
+            },
+            "endFlow": {
+              "Type": "EndFlow",
+              "Parameters": {},
+              "Transitions": {}
+            }
           }
         }
-      }
