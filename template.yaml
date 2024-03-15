@@ -4,7 +4,7 @@ Description: An AWS Serverless Application.
 
 Resources:
   Flow:
-    Type: 'AWS::Connect::ContactFlow'
+    Type: AWS::Connect::ContactFlow
     Properties:
       InstanceArn: arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e
       Name: copilot-test-contact-flow
@@ -30,17 +30,6 @@ Resources:
             "entryPoint": {
               "Type": "EntryPoint",
               "Parameters": {},
-              "Transitions": {
-                "NextAction": "invokeLambdaFunction",
-                "Errors": [],
-                "Conditions": []
-              }
-            },
-            "invokeLambdaFunction": {
-              "Type": "InvokeLambdaFunction",
-              "Parameters": {
-                "FunctionArn": "arn:aws:lambda:us-east-1:123456789012:function:my-function"
-              },
               "Transitions": {
                 "NextAction": "endFlow",
                 "Errors": [],
