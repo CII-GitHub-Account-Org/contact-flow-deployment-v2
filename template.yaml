@@ -10,7 +10,7 @@ Resources:
       Name: copilot-test-contact-flow
       Type: CONTACT_FLOW
       Description: test flow for copilot
-    Content: >
+    Content:
       {
         "Metadata": {
           "entryPointPosition": {

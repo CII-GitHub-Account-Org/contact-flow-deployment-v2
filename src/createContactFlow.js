@@ -50,7 +50,7 @@ async function createContactFlow() {
             Type: 'CONTACT_FLOW',
             Description: 'test flow for copilot', // replace with your description
             Content: JSON.stringify(contactFlowDetails),
-        };
+        };sss
 
         const command = new CreateContactFlowCommand(params);
         const response = await connect.send(command);

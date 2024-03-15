@@ -35,11 +35,11 @@ jobs:
           sudo ./aws/install --update
           sam --version
 
-      # - name: Deploy Contact Flow
-      #   run: |
-      #     sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket callback-phonenumber-update-lex-test-v1
-      #     sam deploy --template-file packaged.yaml --stack-name copilot-test-contact-flow --capabilities CAPABILITY_IAM
-
-      - name: Create contact flow
+      - name: Deploy Contact Flow
         run: |
-          node src/createContactFlow.js
+          sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket callback-phonenumber-update-lex-test-v1
+          sam deploy --template-file packaged.yaml --stack-name copilot-test-contact-flow --capabilities CAPABILITY_IAM
+
+      # - name: Create contact flow
+      #   run: |
+      #     node src/createContactFlow.js
