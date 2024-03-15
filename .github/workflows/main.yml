@@ -35,7 +35,7 @@ jobs:
           sudo ./aws/install --update
           sam --version
 
-      - name: Deploy Contact Flow
+      - name: Deploy Contact Flow # Deploy the contact flow
         run: |
           sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket callback-phonenumber-update-lex-test-v1
           aws cloudformation validate-template --template-body file://template.yaml
