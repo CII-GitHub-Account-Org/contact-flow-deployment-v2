@@ -146,3 +146,135 @@ Resources:
       Tags:
           - Key: testkey
             Value: testValue
+  Flow3:
+    Type: AWS::Connect::ContactFlow
+    Properties:
+        InstanceArn: arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e
+        Name: copilot-test-contact-flow-3
+        Type: CONTACT_FLOW
+        Description: test flow for copilot
+        Content:
+            {
+                "Version": "2019-10-30",
+                "StartAction": "777e1eb3-b581-42db-a3e1-f6ddd36cb92e",
+                "Metadata": {
+                    "entryPointPosition": {
+                        "x": 14.4,
+                        "y": 18.4
+                    },
+                    "ActionMetadata": {
+                        "777e1eb3-b581-42db-a3e1-f6ddd36cb92e": {
+                            "position": {
+                                "x": 216,
+                                "y": 21.6
+                            }
+                        },
+                        "cffe8ffb-cd78-48cf-ad03-1cd12406a4e1": {
+                            "position": {
+                                "x": 522.4,
+                                "y": 261.6
+                            }
+                        },
+                        "24e3fc07-7966-495d-a297-ce58218543dc": {
+                            "position": {
+                                "x": 801.6,
+                                "y": 429.6
+                            }
+                        },
+                        "d29fb27c-c0d1-4a13-ab1c-e0b59081c39b": {
+                            "position": {
+                                "x": 476.8,
+                                "y": 14.4
+                            }
+                        },
+                        "6add197c-b043-4131-a4fc-aafd87a6a1f7": {
+                            "position": {
+                                "x": 194.4,
+                                "y": 248.8
+                            },
+                            "parameters": {
+                                "QueueId": {
+                                    "displayName": "BasicQueue"
+                                }
+                            },
+                            "queue": {
+                                "text": "BasicQueue"
+                            }
+                        }
+                    },
+                    "Annotations": [],
+                    "name": "Basic Chat Flow",
+                    "description": "",
+                    "type": "contactFlow",
+                    "status": "published",
+                    "hash": {}
+                },
+                "Actions": [
+                    {
+                        "Parameters": {
+                            "FlowLoggingBehavior": "Enabled"
+                        },
+                        "Identifier": "777e1eb3-b581-42db-a3e1-f6ddd36cb92e",
+                        "Type": "UpdateFlowLoggingBehavior",
+                        "Transitions": {
+                            "NextAction": "d29fb27c-c0d1-4a13-ab1c-e0b59081c39b"
+                        }
+                    },
+                    {
+                        "Parameters": {},
+                        "Identifier": "cffe8ffb-cd78-48cf-ad03-1cd12406a4e1",
+                        "Type": "TransferContactToQueue",
+                        "Transitions": {
+                            "NextAction": "24e3fc07-7966-495d-a297-ce58218543dc",
+                            "Errors": [
+                                {
+                                    "NextAction": "24e3fc07-7966-495d-a297-ce58218543dc",
+                                    "ErrorType": "QueueAtCapacity"
+                                },
+                                {
+                                    "NextAction": "24e3fc07-7966-495d-a297-ce58218543dc",
+                                    "ErrorType": "NoMatchingError"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Parameters": {},
+                        "Identifier": "24e3fc07-7966-495d-a297-ce58218543dc",
+                        "Type": "DisconnectParticipant",
+                        "Transitions": {}
+                    },
+                    {
+                        "Parameters": {
+                            "Text": "Transferring to Agent Hema"
+                        },
+                        "Identifier": "d29fb27c-c0d1-4a13-ab1c-e0b59081c39b",
+                        "Type": "MessageParticipant",
+                        "Transitions": {
+                            "NextAction": "6add197c-b043-4131-a4fc-aafd87a6a1f7",
+                            "Errors": [
+                                {
+                                    "NextAction": "6add197c-b043-4131-a4fc-aafd87a6a1f7",
+                                    "ErrorType": "NoMatchingError"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Parameters": {
+                            "QueueId": "arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e/queue/249daaf1-4883-430a-bba5-054fc7e6e10c"
+                        },
+                        "Identifier": "6add197c-b043-4131-a4fc-aafd87a6a1f7",
+                        "Type": "UpdateContactTargetQueue",
+                        "Transitions": {
+                            "NextAction": "cffe8ffb-cd78-48cf-ad03-1cd12406a4e1",
+                            "Errors": [
+                                {
+                                    "NextAction": "24e3fc07-7966-495d-a297-ce58218543dc",
+                                    "ErrorType": "NoMatchingError"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
