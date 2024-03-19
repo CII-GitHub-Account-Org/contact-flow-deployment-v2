@@ -82,7 +82,7 @@ Resources:
       Name: copilot-test-contact-flow-2
       Type: CONTACT_FLOW
       Description: test flow for copilot
-    Content: |
+      Content: |
         {
             "Version": "2019-10-30",
             "StartAction": "6f40a3e9-ff2d-4255-b458-5e0f71ae7942",
