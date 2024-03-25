@@ -16,7 +16,8 @@ const cfTemplate = yaml.load(cfTemplateContent);
 // Update the Content property
 cfTemplate.Resources.Flow1.Properties.Content = JSON.stringify(flow1Json);
 cfTemplate.Resources.Flow2.Properties.Content = JSON.stringify(flow2Json);
-console.log(cfTemplate);
+console.log(cfTemplate.Resources.Flow1.Properties.Content);
+console.log(cfTemplate.Resources.Flow2.Properties.Content);
 // Write the updated CloudFormation template
 const updatedCfTemplateContent = yaml.dump(cfTemplate);
 fs.writeFileSync('template.yaml', updatedCfTemplateContent);
