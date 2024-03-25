@@ -4,7 +4,8 @@
   "description": "Node project for deploying Amazon Connect contact flow",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "node predeploy.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   "homepage": "https://github.com/yourusername/my-project#readme",
   "dependencies": {
     "@aws-sdk/client-connect": "^3.533.0",
-    "aws-sdk": "^2.1031.0"
+    "aws-sdk": "^2.1031.0",
+    "fs": "^0.0.1-security",
+    "js-yaml": "^4.1.0"
   }
 }

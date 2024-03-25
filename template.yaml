@@ -10,11 +10,6 @@ Resources:
       Name: copilot-test-contact-flow
       Type: CONTACT_FLOW
       Description: test flow for copilot
-      Content:
-        Fn::Transform:
-          Name: AWS::Include
-          Parameters:
-            Location: ./src/flow1.json
       Tags:
           - Key: testkey
             Value: testValue
@@ -25,11 +20,6 @@ Resources:
       Name: copilot-test-contact-flow-2
       Type: CONTACT_FLOW
       Description: test flow for copilot
-      Content:
-        Fn::Transform:
-          Name: AWS::Include
-          Parameters:
-            Location: ./src/flow2.json
       Tags:
           - Key: testkey
             Value: testValue
