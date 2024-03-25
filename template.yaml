@@ -10,6 +10,7 @@ Resources:
       Name: copilot-test-contact-flow
       Type: CONTACT_FLOW
       Description: test flow for copilot
+      Content: {} # This will be updated by the predeploy.js script
       Tags:
           - Key: testkey
             Value: testValue
@@ -20,6 +21,7 @@ Resources:
       Name: copilot-test-contact-flow-2
       Type: CONTACT_FLOW
       Description: test flow for copilot
+      Content: {} # This will be updated by the predeploy.js script
       Tags:
           - Key: testkey
             Value: testValue
