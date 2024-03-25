@@ -10,8 +10,7 @@ Resources:
       Name: copilot-test-contact-flow
       Type: CONTACT_FLOW
       Description: test flow for copilot
-      Content: |
-        {}
+      Content: <JSON string of flow1Json>
       Tags:
           - Key: testkey
             Value: testValue
@@ -22,8 +21,7 @@ Resources:
       Name: copilot-test-contact-flow-2
       Type: CONTACT_FLOW
       Description: test flow for copilot
-      Content: |
-        {}
+      Content: <JSON string of flow2Json>
       Tags:
           - Key: testkey
             Value: testValue
