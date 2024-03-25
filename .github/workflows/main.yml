@@ -38,10 +38,6 @@ jobs:
       - name: Deploy Contact Flow # Deploy the contact flow
         run: |
           sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket callback-phonenumber-update-lex-test-v1
-        #  aws cloudformation validate-template --template-body file://template.yaml
           npm run predeploy
+          aws cloudformation validate-template --template-body file://template.yaml
           sam deploy --template-file packaged.yaml --stack-name copilot-test-contact-flow --capabilities CAPABILITY_IAM
-
-      # - name: Create contact flow
-      #   run: |
-      #     node src/createContactFlow.js
