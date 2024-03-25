@@ -1,0 +1,61 @@
+{
+    "Version": "2019-10-30",
+    "StartAction": "Play",
+    "Metadata": {
+        "entryPointPosition": {
+            "x": 40,
+            "y": 40
+        },
+        "ActionMetadata": {
+            "5a9f1dfb-4891-4790-87ea-c8511192d959": {
+                "position": {
+                    "x": 570.4,
+                    "y": 259.2
+                }
+            },
+            "Play": {
+                "position": {
+                    "x": 148,
+                    "y": 172.8
+                },
+                "isFriendlyName": true,
+                "parameters": {
+                    "PromptId": {
+                        "displayName": "Beep.wav"
+                    }
+                },
+                "promptName": "Beep.wav"
+            }
+        },
+        "Annotations": [],
+        "name": "Copilot-test-flow",
+        "description": "",
+        "type": "contactFlow",
+        "status": "published",
+        "hash": {}
+    },
+    "Actions": [
+        {
+            "Parameters": {},
+            "Identifier": "5a9f1dfb-4891-4790-87ea-c8511192d959",
+            "Type": "DisconnectParticipant",
+            "Transitions": {}
+        },
+        {
+            "Parameters": {
+                "PromptId": "arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e/prompt/adf5e4e6-65ee-4008-adb7-4a34c77accb9"
+            },
+            "Identifier": "Play",
+            "Type": "MessageParticipant",
+            "Transitions": {
+                "NextAction": "5a9f1dfb-4891-4790-87ea-c8511192d959",
+                "Errors": [
+                    {
+                        "NextAction": "5a9f1dfb-4891-4790-87ea-c8511192d959",
+                        "ErrorType": "NoMatchingError"
+                    }
+                ]
+            }
+        }
+    ]
+  }

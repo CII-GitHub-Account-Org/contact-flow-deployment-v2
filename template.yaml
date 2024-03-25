@@ -10,68 +10,11 @@ Resources:
       Name: copilot-test-contact-flow
       Type: CONTACT_FLOW
       Description: test flow for copilot
-      Content: |
-        {
-          "Version": "2019-10-30",
-          "StartAction": "Play",
-          "Metadata": {
-              "entryPointPosition": {
-                  "x": 40,
-                  "y": 40
-              },
-              "ActionMetadata": {
-                  "5a9f1dfb-4891-4790-87ea-c8511192d959": {
-                      "position": {
-                          "x": 570.4,
-                          "y": 259.2
-                      }
-                  },
-                  "Play": {
-                      "position": {
-                          "x": 148,
-                          "y": 172.8
-                      },
-                      "isFriendlyName": true,
-                      "parameters": {
-                          "PromptId": {
-                              "displayName": "Beep.wav"
-                          }
-                      },
-                      "promptName": "Beep.wav"
-                  }
-              },
-              "Annotations": [],
-              "name": "Copilot-test-flow",
-              "description": "",
-              "type": "contactFlow",
-              "status": "published",
-              "hash": {}
-          },
-          "Actions": [
-              {
-                  "Parameters": {},
-                  "Identifier": "5a9f1dfb-4891-4790-87ea-c8511192d959",
-                  "Type": "DisconnectParticipant",
-                  "Transitions": {}
-              },
-              {
-                  "Parameters": {
-                      "PromptId": "arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e/prompt/adf5e4e6-65ee-4008-adb7-4a34c77accb9"
-                  },
-                  "Identifier": "Play",
-                  "Type": "MessageParticipant",
-                  "Transitions": {
-                      "NextAction": "5a9f1dfb-4891-4790-87ea-c8511192d959",
-                      "Errors": [
-                          {
-                              "NextAction": "5a9f1dfb-4891-4790-87ea-c8511192d959",
-                              "ErrorType": "NoMatchingError"
-                          }
-                      ]
-                  }
-              }
-          ]
-        }
+      Content:
+        Fn::Transform:
+          Name: AWS::Include
+          Parameters:
+            Location: ./src/flow1.json
       Tags:
           - Key: testkey
             Value: testValue
@@ -82,67 +25,11 @@ Resources:
       Name: copilot-test-contact-flow-2
       Type: CONTACT_FLOW
       Description: test flow for copilot
-      Content: |
-        {
-            "Version": "2019-10-30",
-            "StartAction": "6f40a3e9-ff2d-4255-b458-5e0f71ae7942",
-            "Metadata": {
-                "entryPointPosition": {
-                    "x": 40,
-                    "y": 40
-                },
-                "ActionMetadata": {
-                    "81013a74-5e01-4a05-ba6d-513dd3c54297": {
-                        "position": {
-                            "x": 388.8,
-                            "y": 58.4
-                        }
-                    },
-                    "6f40a3e9-ff2d-4255-b458-5e0f71ae7942": {
-                        "position": {
-                            "x": 164,
-                            "y": 39.2
-                        },
-                        "parameters": {
-                            "PromptId": {
-                                "displayName": "Beep.wav"
-                            }
-                        },
-                        "promptName": "Beep.wav"
-                    }
-                },
-                "Annotations": [],
-                "name": "Copilot-test-flow-2",
-                "description": "",
-                "type": "contactFlow",
-                "status": "published",
-                "hash": {}
-            },
-            "Actions": [
-                {
-                    "Parameters": {},
-                    "Identifier": "81013a74-5e01-4a05-ba6d-513dd3c54297",
-                    "Type": "DisconnectParticipant",
-                    "Transitions": {}
-                },
-                {
-                    "Parameters": {
-                        "PromptId": "arn:aws:connect:us-east-1:750344256621:instance/4bbee21d-72b8-442b-af39-dce4128ca77e/prompt/adf5e4e6-65ee-4008-adb7-4a34c77accb9"
-                    },
-                    "Identifier": "6f40a3e9-ff2d-4255-b458-5e0f71ae7942",
-                    "Type": "MessageParticipant",
-                    "Transitions": {
-                        "NextAction": "81013a74-5e01-4a05-ba6d-513dd3c54297",
-                        "Errors": [
-                            {
-                                "NextAction": "81013a74-5e01-4a05-ba6d-513dd3c54297",
-                                "ErrorType": "NoMatchingError"
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
+      Content:
+        Fn::Transform:
+          Name: AWS::Include
+          Parameters:
+            Location: ./src/flow2.json
       Tags:
           - Key: testkey
             Value: testValue
